@@ -175,7 +175,7 @@ jobs:
               fi
 
               echo "keymap ${config_arg[@]} parse -z $keymap_file $parse_args >${{ inputs.output_folder }}/$keyboard.yaml \
-              && keymap ${config_arg[@]} draw ${{ inputs.output_folder }}/$keyboard.yaml $draw_args >${{ inputs.output_folder }}/$keyboard.svg \
+              && keymap ${config_arg[@]} draw ${{ inputs.output_folder }}/$keyboard.yaml $draw_args >${{ inputs.output_folder }}/$keyboard.svg"
 
               # keymap "${config_arg[@]}" parse -z "$keymap_file" $parse_args >"${{ inputs.output_folder }}/$keyboard.yaml" \
               # && keymap "${config_arg[@]}" draw "${{ inputs.output_folder }}/$keyboard.yaml" $draw_args >"${{ inputs.output_folder }}/$keyboard.svg" \
