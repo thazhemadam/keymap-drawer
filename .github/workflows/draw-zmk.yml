@@ -174,12 +174,15 @@ jobs:
                   draw_args+=" -j $json_path/${keyboard}.json"
               fi
 
-              keymap "${config_arg[@]}" parse -z "$keymap_file" $parse_args >"${{ inputs.output_folder }}/$keyboard.yaml" \
-              && keymap "${config_arg[@]}" draw "${{ inputs.output_folder }}/$keyboard.yaml" $draw_args >"${{ inputs.output_folder }}/$keyboard.svg" \
-              || {
-                  echo "ERROR: parsing or drawing failed for $keyboard!"
-                  error_occurred=1
-              }
+              echo "keymap ${config_arg[@]} parse -z $keymap_file $parse_args >${{ inputs.output_folder }}/$keyboard.yaml \
+              && keymap ${config_arg[@]} draw ${{ inputs.output_folder }}/$keyboard.yaml $draw_args >${{ inputs.output_folder }}/$keyboard.svg \
+
+              # keymap "${config_arg[@]}" parse -z "$keymap_file" $parse_args >"${{ inputs.output_folder }}/$keyboard.yaml" \
+              # && keymap "${config_arg[@]}" draw "${{ inputs.output_folder }}/$keyboard.yaml" $draw_args >"${{ inputs.output_folder }}/$keyboard.svg" \
+              # || {
+              #     echo "ERROR: parsing or drawing failed for $keyboard!"
+              #     error_occurred=1
+              # }
               DRAWINGS+=(\"${{ inputs.output_folder }}/$keyboard.yaml\" \"${{ inputs.output_folder }}/$keyboard.svg\")
           done
           IFS=','
